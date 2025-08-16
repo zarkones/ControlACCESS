@@ -1,4 +1,4 @@
-module access
+module github.com/zarkones/ControlACCESS
 
 go 1.24.5
 
