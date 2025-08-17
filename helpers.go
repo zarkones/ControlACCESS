@@ -12,10 +12,10 @@ func AuthenticateAndAuthorize(
 	metadata *string,
 	getPublicKeyByUserID func(userID string) (*rsa.PublicKey, error),
 	getPermissionsByUserID func(userID string) ([]Permission, error),
-) (username string, permissions []Permission, reject bool) {
-	username, permissions, reject = Authenticate(w, r, getPublicKeyByUserID, getPermissionsByUserID)
+) (userID string, permissions []Permission, reject bool) {
+	userID, permissions, reject = Authenticate(w, r, getPublicKeyByUserID, getPermissionsByUserID)
 	if reject {
-		return username, permissions, reject
+		return userID, permissions, reject
 	}
 
 	if permissionKey != PERMISSION_NOT_SPECIFIED {
@@ -25,7 +25,7 @@ func AuthenticateAndAuthorize(
 		}
 	}
 
-	return username, permissions, false
+	return userID, permissions, false
 }
 
 func Authenticate(
