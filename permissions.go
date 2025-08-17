@@ -14,8 +14,9 @@ var (
 var Permissions = map[string]PermissionKey{}
 
 func Route(r *http.ServeMux, method, path string, permission PermissionKey, handler func(http.ResponseWriter, *http.Request)) {
-	Permissions[method+path] = permission
-	r.HandleFunc(method+" "+path, handler)
+	endpoint := method + " " + path
+	Permissions[endpoint] = permission
+	r.HandleFunc(endpoint, handler)
 }
 
 var HandlerGetUserPublicKey func(userID string) (*rsa.PublicKey, error)
