@@ -23,7 +23,7 @@ var HandlerGetPermissionsByUserID func(userID string) ([]Permission, error)
 
 // IsAuthorized returns error only if the process failed, not if it's not authorized.
 func IsAuthorized(w http.ResponseWriter, r *http.Request, metadata *string) (userID string, isAuthorized bool, err error) {
-	endpointKey := r.Method + r.Pattern
+	endpointKey := r.Pattern
 
 	permissionKey, ok := Permissions[endpointKey]
 	if !ok {

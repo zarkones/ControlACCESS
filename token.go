@@ -51,7 +51,7 @@ func VerifyToken(rawToken string, getPublicKeyByUserID func(userID string) (*rsa
 		return "", ErrNilInsecurePayload
 	}
 
-	insecureUserID := fmt.Sprint(insecurePayload["u"])
+	insecureUserID := fmt.Sprint(insecurePayload["id"])
 	if len(insecureUserID) == 0 || len(insecureUserID) > 32 {
 		return "", ErrInvalidInsecureUserID
 	}
