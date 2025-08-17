@@ -1,5 +1,7 @@
 package access
 
+import "time"
+
 type PermissionKey int
 
 const (
@@ -10,5 +12,5 @@ type Permission struct {
 	Key       PermissionKey
 	UserID    string
 	Metadata  string
-	CreatedAt int64
+	CreatedAt time.Time
 }
